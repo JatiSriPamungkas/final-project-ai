@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens extracted via Figma MCP from node 2:2 (Training-AI /
+ * Landing Page). Every value traces to a layer in that node; the source
+ * node id sits beside each group. Do not add a value without one.
+ */
+
+:root {
+  /* 2:2 body surface, 2:101 pagination capsule, 2:49 badge, 2:8 icon well */
+  --background: #0f131d;
+  --surface: #171b26;
+  --surface-raised: #1c1f2a;
+  --surface-icon: #262a35;
+
+  /* 2:38 heading, 2:40 subhead, 2:50 meta, 2:107 disabled */
+  --foreground: #dfe2f1;
+  --foreground-muted: #c7c4d7;
+  --foreground-subtle: #908fa0;
+  --foreground-disabled: #464554;
+
+  /* 2:84 primary fill, 2:97 stage dot, 2:20 live dot, 2:87 label ink */
+  --accent: #8083ff;
+  --accent-soft: #c0c1ff;
+  --accent-teal: #4fdbc8;
+  --accent-ink: #0d0096;
+
+  /* Portfolio 1:637 sky dot, 1:616 CTA ink, 1:609 gradient mid-stop */
+  --accent-sky: #7bd0ff;
+  --accent-deep: #1000a9;
+  --accent-lilac: #e1e0ff;
+
+  /* Portfolio surfaces — 1:642 terminal shell, 1:643 header, 1:619 ghost button */
+  --slate-panel: rgba(17, 24, 39, 0.7);
+  --slate-header: rgba(10, 14, 24, 0.9);
+  --ghost-fill: rgba(255, 255, 255, 0.03);
+
+  /* Portfolio hairlines — 1:605 rule 0.3, 1:624 rule 0.2, 1:619 border 0.07 */
+  --rule: rgba(70, 69, 84, 0.3);
+  --rule-soft: rgba(70, 69, 84, 0.2);
+  --rule-faint: rgba(255, 255, 255, 0.07);
+
+  /* 2:18 status pill, 2:43 cards, 2:109 pagination, 2:31 badge, 2:90 button */
+  --glass-strong: rgba(23, 27, 38, 0.8);
+  --glass: rgba(23, 27, 38, 0.7);
+  --glass-soft: rgba(23, 27, 38, 0.4);
+  --glass-panel: rgba(38, 42, 53, 0.6);
+  --glass-button: rgba(38, 42, 53, 0.5);
+
+  /* 2:8 border 0.1, 2:43 border 0.08, 2:24 border 0.05 */
+  --hairline: rgba(255, 255, 255, 0.1);
+  --hairline-soft: rgba(255, 255, 255, 0.08);
+  --hairline-faint: rgba(255, 255, 255, 0.05);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-icon: var(--surface-icon);
+
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-foreground-disabled: var(--foreground-disabled);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-sky: var(--accent-sky);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-lilac: var(--accent-lilac);
+
+  --color-slate-panel: var(--slate-panel);
+  --color-slate-header: var(--slate-header);
+  --color-ghost-fill: var(--ghost-fill);
+
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --color-rule-faint: var(--rule-faint);
+
+  --color-glass-strong: var(--glass-strong);
+  --color-glass: var(--glass);
+  --color-glass-soft: var(--glass-soft);
+  --color-glass-panel: var(--glass-panel);
+  --color-glass-button: var(--glass-button);
+
+  --color-hairline: var(--hairline);
+  --color-hairline-soft: var(--hairline-soft);
+  --color-hairline-faint: var(--hairline-faint);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-plus-jakarta);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Type scale — 2:38, 2:53, 2:40, 2:87, 2:55, 2:23, 2:34 */
+  --text-display: 56px;
+  --text-display--line-height: 70px;
+  --text-display--letter-spacing: -1.4px;
+
+  --text-headline: 20px;
+  --text-headline--line-height: 28px;
+  --text-headline--letter-spacing: -0.2px;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 29.25px;
+  --text-body-lg--letter-spacing: -0.09px;
+
+  --text-body: 15px;
+  --text-body--line-height: 22.5px;
+
+  --text-body-sm: 13px;
+  --text-body-sm--line-height: 21.13px;
+  --text-body-sm--letter-spacing: 0.065px;
+
+  --text-meta: 11px;
+  --text-meta--line-height: 14px;
+  --text-meta--letter-spacing: 0.88px;
+
+  --text-pill: 12px;
+  --text-pill--line-height: 16px;
+  --text-pill--letter-spacing: 1.2px;
+
+  /* Radii — 2:49 badge 4, 2:8 icon well 8, 2:43 card 12 */
+  --radius-badge: 4px;
+  --radius-well: 8px;
+  --radius-card: 12px;
+
+  /* Layout — 2:6 page 1280, 2:30 canvas 896, 2:39 copy 672 */
+  --container-page: 1280px;
+  --container-canvas: 896px;
+  --container-copy: 672px;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* 2:3 ambient grid — 40px cell */
+@utility ambient-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    black 0%,
+    transparent 75%
+  );
+}
+
+/* 2:4 indigo bloom */
+@utility bloom-primary {
+  background: radial-gradient(
+    circle,
+    rgba(128, 131, 255, 0.15) 0%,
+    rgba(128, 131, 255, 0) 70%
+  );
+}
+
+/* 2:5 teal bloom */
+@utility bloom-teal {
+  background: radial-gradient(
+    circle,
+    rgba(4, 180, 162, 0.1) 0%,
+    rgba(4, 180, 162, 0) 70%
+  );
+}
+
+/* 2:38 gradient clause — #c0c1ff → #8083ff → #4fdbc8 */
+@utility text-gradient-bootcamp {
+  background-image: linear-gradient(
+    to right,
+    var(--accent-soft) 0%,
+    var(--accent) 50%,
+    var(--accent-teal) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1:609 gradient clause — #c0c1ff → #e1e0ff → #4fdbc8 */
+@utility text-gradient-hero {
+  background-image: linear-gradient(
+    to right,
+    var(--accent-soft) 0%,
+    var(--accent-lilac) 50%,
+    var(--accent-teal) 100%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1:638 sky tone used by the Node.js stack dot */
+@utility dot-sky {
+  background-color: var(--accent-sky);
+}
